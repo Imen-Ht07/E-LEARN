@@ -1,0 +1,71 @@
+<!--Navbar-->
+<app-navbar></app-navbar>  
+<body>
+    <div class="hero-wrap js-fullheight" style="background-image: url('assets/image/8.jpg');">
+      <section class="ftco-section ftco-no-pb ftco-no-pt">
+        <aside>
+            <h3 class="mb-4">Register Etudiant </h3>
+            <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+              <div class="form-group">
+                <input type="text" formControlName="Nom" class="form-control" placeholder="Enter ton nom">
+              </div>
+              <!-- Afficher le message d'erreur pour le champ nomPrenom -->
+              <div *ngIf="signupForm.get('Nom')?.invalid && signupForm.get('Nom')?.touched" class="text-danger">Nom est requis</div>
+              
+              <div class="form-group">
+                <input type="text" formControlName="Prenom" class="form-control" placeholder="Enter ton Prénom">
+              </div>
+              <!-- Afficher le message d'erreur pour le champ nomPrenom -->
+              <div *ngIf="signupForm.get('nomPrenom')?.invalid && signupForm.get('nomPrenom')?.touched" class="text-danger">Prénom est  requis</div>
+              
+              <div class="form-group">
+                <input type="number" formControlName="cin" class="form-control" placeholder="Enter Numéro de CIN">
+              </div>
+              <!-- Afficher le message d'erreur pour le champ cin -->
+              <div *ngIf="signupForm.get('cin')?.invalid && signupForm.get('cin')?.touched" class="text-danger">CIN est requis et doit être de 8 chiffres </div>
+          
+              <div class="form-group">
+                <input type="date" formControlName="dateNaissance" class="form-control" placeholder="Enter Date de naissance">
+              </div>
+              <!-- Afficher le message d'erreur pour le champ dateNaissance -->
+              <div *ngIf="signupForm.get('dateNaissance')?.invalid && signupForm.get('dateNaissance')?.touched" class="text-danger">Date de naissance est requise</div>
+          
+              <div class="form-group">
+                <input type="text" formControlName="adresse" class="form-control" placeholder="Enter ton adresse">
+              </div>
+              <!-- Afficher le message d'erreur pour le champ tel -->
+              <div *ngIf="signupForm.get('adresse')?.invalid && signupForm.get('adresse')?.touched" class="text-danger">Adresse est requise</div>
+          
+              <div class="form-group">
+                <input type="text" formControlName="Classe" class="form-control" placeholder="Enter ton classe">
+              </div>
+
+              <div class="form-group">
+                <input type="number" formControlName="tel" class="form-control" placeholder="Enter Numéro Téléphone">
+              </div>
+              <!-- Afficher le message d'erreur pour le champ tel -->
+              <div *ngIf="signupForm.get('tel')?.invalid && signupForm.get('tel')?.touched" class="text-danger">Numéro Téléphone est requis et doit être de 8 chiffres</div>
+          
+              <div class="form-group">
+                <input type="email" formControlName="email" class="form-control" placeholder="Enter email">
+              </div>
+              <!-- Afficher le message d'erreur pour le champ email -->
+              <div *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched" class="text-danger">Email est requis et doit être une adresse email valide</div>
+          
+              <div class="form-group">
+                <input id="password-field" type="password" formControlName="password" class="form-control" placeholder="Password">
+              </div>
+              <!-- Afficher le message d'erreur pour le champ password -->
+              <div *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched" class="text-danger">Le mot de passe est requis et doit contenir au moins 6 caractères</div>
+          
+              <div class="form-group d-flex justify-content-end mt-4">
+                <button type="submit" class="btn btn-primary submit"><span class="fa fa-paper-plane"></span></button>
+              </div>
+            </form>
+            <p class="text-center">Already have an account? <a routerLink="/login">Login</a></p>
+          </aside>
+      </section>
+    </div>
+</body>
+  <!--Footer-->
+   <app-footer></app-footer>

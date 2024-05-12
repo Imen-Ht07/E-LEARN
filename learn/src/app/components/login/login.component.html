@@ -1,0 +1,37 @@
+<app-navbar></app-navbar>  
+
+<div class="hero-wrap js-fullheight" style="background-image: url('assets/image/8.jpg');">
+  <section class="ftco-section ftco-no-pb ftco-no-pt">
+    <aside>
+      <h3 class="mb-4">Login</h3>
+      <form class="login-form"  [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="text" id="email" name="email" formControlName="email" required>
+          <div *ngIf="submitted && f['email'].errors?.['required']" class="error-message">
+            Email est un champs obligatoire
+          </div>
+          <div *ngIf="submitted && f['email'].errors?.['email']" class="error-message">
+            Invalid email format
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" formControlName="password" required>
+          <div *ngIf="submitted && f['password'].errors?.['required']" class="error-message">
+            Password est un champs obligatoire
+          </div>
+          <div *ngIf="submitted && f['password'].errors?.['minlength']" class="error-message">
+            Password must be at least 6 characters long
+          </div>
+        </div>
+        <div class="form-group d-flex justify-content-end mt-4">
+          <button type="submit" class="btn btn-primary submit"><span class="fa fa-paper-plane"><span *ngIf="loading"></span></span></button>
+        </div>
+      </form>
+      <p class="text-center">Don't have an account? <a routerLink="/">Sign Up</a></p>
+    </aside>
+  </section>
+</div>
+
+<app-footer></app-footer>

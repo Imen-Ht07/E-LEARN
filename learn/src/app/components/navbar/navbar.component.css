@@ -1,0 +1,43 @@
+/* Style du header */
+header {
+    padding: 00px 0; /* Espacement intérieur du header */
+  }
+  
+  /* Style de la barre de navigation */
+  .navbar {
+    background-color:  #6e21cd;
+    border-bottom: none; /* Supprime la bordure en bas de la barre de navigation */
+  }
+  
+  /* Style du bouton de navigation pour les écrans mobiles */
+  .navbar-toggler {
+    color: #fff; /* Couleur du bouton de navigation */
+    border: none; /* Supprime la bordure du bouton de navigation */
+  }
+  
+  /* Style du texte du bouton de navigation pour les écrans mobiles */
+  .navbar-toggler span {
+    font-size: 20px; /* Taille de police du texte du bouton de navigation */
+  }
+  
+  /* Style de la liste des éléments de navigation */
+  .navbar-nav {
+    text-align: center; /* Centre les éléments de navigation */
+  }
+  
+  /* Style des éléments de la liste de navigation */
+  .nav-item {
+    margin-right: 20px; /* Espacement entre les éléments de navigation */
+  }
+  
+  /* Style des liens de navigation */
+  .nav-link {
+    color: #6e21cd; /* Couleur du texte des liens de navigation */
+    transition: color 0.3s; /* Animation de transition pour la couleur du texte */
+  }
+  
+  /* Style des liens de navigation au survol */
+  .nav-link:hover {
+    color: #cd07ff; /* Couleur du texte au survol */
+  }
+  

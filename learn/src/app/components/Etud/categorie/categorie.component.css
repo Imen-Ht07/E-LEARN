@@ -1,0 +1,148 @@
+.resource-content {
+    margin-bottom: 10px;
+  }
+  
+  .actions {
+    margin-top: 10px;
+  }
+  
+  .no-data {
+    color: #5f2865;
+    font-size: 18px;
+  }
+  
+  .btn-link {
+    color: #fff;
+    background-color: #a880f1 ;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 3px;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  /* Bouton par défaut */
+  button {
+    display: inline-block;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+   background-color:   #874ee3;
+  }
+  #logout{
+    color: #fafcfa;
+    font-size: 15px;
+  }
+  #tit{
+    font-size: 20px;
+  }
+  #tit1{
+    font-size: 14px;
+  }
+  .icon {
+    width: 30px;
+    height: 30px;
+    background-size: cover;
+  }
+  .ico {
+    width: 60px;
+    height: 60px;
+    background-size: cover;
+  }
+  .ic {
+    width: 30px;
+    height: 30px;
+    background-size: cover;
+  }
+  a{
+    color: white;
+  }
+  .color{
+    color: rgba(0, 0, 0, 0.66);
+  }
+  .profile-info,
+  .error-info {
+  padding: 10px;
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  }
+  
+  .profile-info p,
+  .error-info p {
+  margin: 0;
+  }
+  
+  .dropdown-toggle {
+  color: #333;
+  text-decoration: none;
+  cursor: pointer;
+  }
+  
+  .dropdown-toggle:hover {
+  color: #555;
+  }
+  
+  .dropdown {
+  position: relative;
+  display: inline-block;
+  }
+  
+  .dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 999;
+  display: none;
+  min-width: 160px;
+  padding: 5px 0;
+  margin: 2px 0 0;
+  font-size: 14px;
+  text-align: left;
+  list-style: none;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  }
+  
+  .dropdown:hover .dropdown-menu {
+  display: block;
+  }
+  /* Styles généraux pour les cartes */
+  .card {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+  }
+  
+  .card:hover {
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  }
+  
+  .card-header {
+    font-size: 1.25rem; 
+    background-color:#874ee3;/* Taille de police plus grande pour les en-têtes */
+  }
+  
+  .card-body h5 {
+    color: #a880f1;
+    text-align: center ; /* Couleur du thème Bootstrap primary */
+  }
+  
+  .card-body p {
+    font-size: 0.9rem;
+    color: #666; /* Gris foncé pour le texte, améliore la lisibilité */
+  }
+  
+  .card-footer {
+    background-color: #f8f9fa; /* Couleur légèrement différente pour le pied de page pour une distinction claire */
+    border-top: 1px solid #e3e6f0; /* Ligne de séparation subtile */
+  }

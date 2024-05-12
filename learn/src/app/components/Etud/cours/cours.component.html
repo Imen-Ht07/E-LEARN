@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>PFE</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="">
+    <meta name="author" content="Phoenixcoded" />
+    <!-- Favicon icon -->
+
+    
+    <link rel="icon" href="/assets/admin/images/favicon.ico" type="image/x-icon">
+    <!-- vendor css -->
+    <link rel="stylesheet" href="/assets/admin/css/style.css">
+</head>
+<body style=" background: linear-gradient(80deg, #6e27df 3%, #a880f1 100%);" >
+	<!-- [ navigation menu ] start -->
+    <nav class="pcoded-navbar" style=" height: 60%;  background:linear-gradient(80deg, #6e27df 3%, #a880f1  100%)">	
+        <div class="navbar-wrapper  ">
+    <div class="navbar-content scroll-div " >
+      <div >
+        <div class="main-menu-header">
+          <img class="img-radius" src="../../../../assets/image/5.jpg" alt="User-Profile-Image">
+          <div class="user-details">
+            <div id="more-details" class="text-white"> E-Learning <i class="fa fa-caret-down"></i>
+                          </div>
+          </div>
+        </div>
+      </div>
+    <br><br>
+      <ul class="nav pcoded-inner-navbar contain "id="tit1">
+        <li class="nav-item">
+            <a href="/dashboard" class="nav-link ">
+                    <span class="pcoded-mtext mx-2">Tableau de bord</span></a>
+        </li>
+        <li class="nav-item pcoded-hasmenu">
+            <a href="/categorieView" class="nav-link ">
+               <span class="pcoded-mtext mx-2"> Cours</span></a>
+        </li>
+            <li class="nav-item pcoded-hasmenu">
+                <a href="/video" class="nav-link ">
+                   <span class="pcoded-mtext mx-2"> Vidéos </span></a>
+            </li>
+            <li class="nav-item pcoded-hasmenu">
+              <a href="/direct" class="nav-link ">
+                 <span class="pcoded-mtext mx-2"> Cours en direct</span></a>
+      <li class="nav-item pcoded-hasmenu">
+          <a href="/calender" class="nav-link ">
+             <span class="pcoded-mtext mx-2"> Calendrier </span></a>
+      </li>	
+    </ul>
+    </div>
+    </div>
+    </nav>
+    <!-- [ navigation menu ] end -->
+	<!-- [ Header ] start -->
+<header class="navbar pcoded-header navbar-expand-lg navbar-light header-blue">
+  <div class="m-header">
+      <a class="mobile-menu" id="mobile-collapse" href="/dashboard"><span></span></a>
+      <a href="#!" class="b-brand"></a>
+      <a href="#!" class="mob-toggler">
+          <i class="feather icon-more-vertical"></i>
+      </a>
+  </div>
+  <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+          <li class="nav-item" id="logout">
+              <a href="#!" class="pop-search"><i class="feather icon-search"></i></a>
+              <div class="search-bar">
+                  <input type="text" id="m-search" class="form-control" placeholder="Rechercher...">
+                  <button type="button" class="close" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+          </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+          <li>
+              <div class="dropdown" id="logout">
+                  <a class="dropdown-toggle mr-5" href="#" data-toggle="dropdown"></a>
+                  <div class="dropdown-menu dropdown-menu-right notification">
+                      <div class="noti-head">
+                          <h6 class="d-inline-block m-b-0"></h6>
+                      </div>
+                  </div>
+          <li>
+              <div class="dropdown drp-user">
+                <app-logout></app-logout>
+              </div>
+          </li>
+  </div>
+  </li>
+  </ul>
+  </div>
+</header>
+<!-- [ Header ] end -->
+<!-- [ Main Content ] start -->
+<div class="pcoded-main-container">
+    <div class="pcoded-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header container">
+            <div class="page-block ">
+                <div class="row align-items-center">
+                    <div class="col-md-16">
+                        <div class="page-header-title">
+                            <h5 class="m-b-10" id="tit">Tableau de bord</h5>
+                        </div>
+                        <ul class="breadcrumb" id="tit">
+                            <li class="breadcrumb-item"><a href="/dashboard"><i class="feather icon-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="/dashboard">Tableau de bord</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="example-container mb-5" style="padding: 80px;">
+        <!-- [ breadcrumb ] end -->
+<!--********************************************************************************************************************--><!-- No data message -->
+<p *ngIf="resources.length <= 0" class="no-data text-center">Aucun cours en ce moment.</p>
+
+<!-- Search input -->
+<div class="form-group has-search container col-md-6 mt-1">
+  <input type="text" class="form-control fa fa-search " placeholder="Search">
+</div>
+
+<!-- Resource list -->
+<div class="container mt-4">
+    <div class="row">
+      <!-- Carte pour chaque ressource -->
+      <div class="col-md-4 mb-4" *ngFor="let resource of resources">
+        <div class="card h-100">
+          <div class="card-header text-white">
+            {{ resource.title }}
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Description</h5>
+            <p class="card-text">{{ resource.description }}</p>
+          </div>
+          <div class="card-footer">
+            <div *ngIf="resource.fileURL && isPDF(resource.fileURL)">
+                <a [href]="'http://localhost:3000/' + resource.fileURL" target="_blank" class="btn btn-link">Ouvrir le PDF</a>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>  
+  </div></div></div></div>
+        <!--Footer-->
+        <app-footer></app-footer>
+    
+      </body>
+      </html>

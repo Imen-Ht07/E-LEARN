@@ -1,0 +1,81 @@
+<!-- [ Main Content ] start -->
+<div class="col-xl-12">
+    <div class="container p-3 my-3 border cont">
+        <div class="form-group mb-4">
+           <div class="card-header col-lg-12"><h1 class="text-center text">Listes des étudiants</h1></div>
+           <input id="exampleFormControlInput2" type="text" placeholder="Chercher ...?"
+            [(ngModel)]="textsearch" class="form-control form-control-underlined">
+         </div><br>
+        <!-- table section -->
+       
+        <table class="table align-middle mb-0 text-center table-responsive-lg" style="overflow-x:auto;">
+           <thead class="bg countour border text-bold">
+             <tr>
+               
+               <th>#</th>
+               <th>Nom/Prénom</th>
+               <th>CIN</th>
+               <th>Classe</th>
+               <th>Email</th>
+               <th>Adresse/Numéro</th>
+               <th>Status</th>
+               <th>Actions</th>
+               
+             </tr>
+           </thead>
+           <tbody *ngFor="let etudiant of etudiants | paginate : {
+            itemsPerPage: pageSize,
+            currentPage: page,
+            totalItems: count
+          } 
+            " >
+             <tr>
+              
+               <td><p class="fw-normal mb-1">{{etudiant.Nom}}<br>{{ etudiant.Prenom}}</p></td>
+               <td><p class="text-muted mb-0">{{ etudiant.cin}}</p></td>
+               <td><p class="text-muted mb-0">{{ etudiant.Classe}}</p></td>
+                 <td><p class="text-muted mb-0">{{ etudiant.email}}</p></td>
+               <td><p class="fw-normal mb-1">{{ etudiant.adresse}}<br>{{ etudiant.tel}}</p></td>
+               <td>
+                <div *ngIf="etudiant.isVerified===true;then ok else non">{{etudiant.isVerified}}</div>
+                  <ng-template #ok>
+                    <span class="badge badge-success rounded-pill d-inline" >Vérifie</span>
+                  </ng-template>
+                  <ng-template #non>
+                   <span class="badge badge-danger rounded-pill d-inline" >Non vérifie</span>
+                 </ng-template>
+              </td> 
+               <td>
+                <button type="button" class="btn btn-link btn-sm btn-rounded" (click)="acceptEtud(etudiant._id)" >
+                    <a  title="Verifier" class="text-black"><i class="fa fa-check-circle iconc"></i></a>
+                  </button>
+                 <button type="button" class="btn btn-link btn-sm btn-rounded" (click)="refuseEtude(etudiant._id)">
+                    <a  title="refuser" class="text-black"><i class="fa fa-times-circle icont"></i></a>
+                  </button>
+                 <button type="button" class="btn btn-link btn-sm btn-rounded" title="supprimer"  (click)="deleteEtud(etudiant)">
+                   <i class="fa fa-trash icon"></i>
+                 </button>
+               </td>
+             </tr>
+             
+           </tbody>
+           
+         </table>
+         <div class="col-md-8">
+            Items par Page:
+            <select (change)="handlePageSizeChange($event)">
+              <option *ngFor="let size of pageSizes" [ngValue]="size">
+                {{ size }}
+              </option>
+            </select>
+            </div>
+            <div class="d-flex justify-content-center">
+                <pagination-controls
+                previousLabel="Prev"
+                nextLabel="Next"
+                (pageChange)="handlePageChange($event)"
+                 ></pagination-controls>
+                </div>
+    </div>
+<!-- [ Main Content ] end -->
+</div>

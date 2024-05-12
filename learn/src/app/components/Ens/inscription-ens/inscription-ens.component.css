@@ -1,0 +1,78 @@
+/* Assurez-vous que le formulaire soit centré dans la page */
+.ftco-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ajustez la hauteur selon vos besoins */
+  }
+  
+  /* Style du formulaire */
+  form {
+    background-color: rgba(255, 255, 255, 0.8); /* Ajoutez une opacité au formulaire pour une meilleure lisibilité */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ajoutez une ombre légère */
+    width: 400px; /* Ajustez la largeur selon vos besoins */
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group input[type="text"],
+  .form-group input[type="email"],
+  .form-group input[type="password"],
+  .form-group select {
+    width: 100%;
+    padding: 7px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .form-group select {
+    appearance: none; /* Cachez le style de sélection par défaut du navigateur */
+  }
+  
+  .form-group select:focus {
+    outline: none;
+  }
+  
+  .btn-primary {
+    background-color: #a880f1; /* Changez la couleur de fond du bouton */
+    border-color: #a880f1; /* Changez la couleur de la bordure du bouton */
+    color: #fff; /* Changez la couleur du texte du bouton */
+  }
+  
+  .btn-primary:hover {
+    background-color:  #6e27df; /* Changez la couleur de fond du bouton au survol */
+    border-color:  #6e27df; /* Changez la couleur de la bordure du bouton au survol */
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  /* Style de l'image de fond */
+  .hero-wrap {
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+  }
+  
+  /* Style de l'élément aside */
+  aside {
+    background-color: rgba(255, 255, 255, 0.8); /* Ajoutez une opacité à l'élément aside pour une meilleure lisibilité */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ajoutez une ombre légère */
+    width: 440px; /* Ajustez la largeur selon vos besoins */
+  }
+  
+  h3 {
+    text-align: center;
+    color: #781ade;
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 0;
+  }
+  

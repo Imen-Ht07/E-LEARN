@@ -1,0 +1,55 @@
+/* Footer styles */
+.ftco-footer {
+    background: linear-gradient(80deg, #6e27df 3%, #a880f1 100%);
+    color: #fff;
+    padding: 50px 0;
+}
+
+.ftco-footer h2 {
+    color: #fff;
+}
+
+.ftco-footer p {
+    color: #a9afba;
+}
+
+.ftco-footer a {
+    color: #a9afba;
+    transition: color 0.3s ease;
+}
+
+.ftco-footer a:hover {
+    color: #fff;
+}
+
+.ftco-footer .ftco-footer-social .fa {
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.ftco-footer .ftco-footer-social a {
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+.ftco-footer .ftco-footer-social a:hover {
+    color: #ffffff;
+}
+
+.ftco-footer .block-23 li {
+    margin-bottom: 10px;
+}
+
+.ftco-footer .block-23 .icon {
+    color: #ffffff;
+    margin-right: 10px;
+}
+
+.ftco-footer .block-23 .text {
+    color: #a9afba;
+}
+
+/* Center footer text */
+.ftco-footer .text-center {
+    color: #a9afba;
+}
