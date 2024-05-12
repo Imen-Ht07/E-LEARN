@@ -40,10 +40,6 @@ export class LoginComponent {
           alert('Email or Password est incorrect');
         } else if (!data.token) {
           alert('Authentication échoué.Attendez la verification de ton compte');
-        } else if (!data.user.email) {
-          alert('Email est incorrect');
-        } else if (!data.user.password) {
-          alert('Mot de passe est incorrect');
         } else {
           console.log('Login successful');
           console.log('Data.user.role:', data.user.role);

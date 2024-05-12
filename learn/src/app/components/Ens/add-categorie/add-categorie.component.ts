@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CategorieService } from 'src/app/services/categorie.service';
 import { Categorie } from 'src/app/models/categorie';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-add-categorie',
   templateUrl: './add-categorie.component.html',
@@ -15,7 +15,9 @@ export class AddCategorieComponent {
   };
   selectedFile: File | null = null;
 
-  constructor(private categorieService: CategorieService) { }
+  constructor(private categorieService: CategorieService,
+    private router: Router
+  ) { }
 
   onFileSelected(event: any): void {
     const file: File = event.target.files[0];
@@ -33,10 +35,12 @@ export class AddCategorieComponent {
       .subscribe(
         response => {
           console.log('Catégorie ajoutée avec succès : ', response);
-          // Réinitialiser les champs après l'ajout réussi
+          window.alert('Catégorie ajoutée avec succès');
+          this.router.navigate(['/categorie']);
           this.resetFields();
         },
         error => {
+          window.alert('Erreur lors de l\'ajout de la catégorie');
           console.error('Erreur lors de l\'ajout de la catégorie : ', error);
         }
       );
