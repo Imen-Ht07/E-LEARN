@@ -17,7 +17,7 @@
 </head>
 <body style=" background: linear-gradient(80deg, #6e27df 3%, #a880f1 100%);" >
 	<!-- [ navigation menu ] start -->
-    <nav class="pcoded-navbar" style=" height: 60%;  background:linear-gradient(80deg, #6e27df 3%, #a880f1  100%)">	
+    <nav class="pcoded-navbar" style=" height: 95%;  background:linear-gradient(80deg, #6e27df 3%, #a880f1  100%)">	
         <div class="navbar-wrapper  ">
     <div class="navbar-content scroll-div " >
       <div >
@@ -39,10 +39,6 @@
             <a href="/categorieView" class="nav-link ">
                <span class="pcoded-mtext mx-2"> Cours</span></a>
         </li>
-            <li class="nav-item pcoded-hasmenu">
-                <a href="/video" class="nav-link ">
-                   <span class="pcoded-mtext mx-2"> Vidéos </span></a>
-            </li>
             <li class="nav-item pcoded-hasmenu">
               <a href="/direct" class="nav-link ">
                  <span class="pcoded-mtext mx-2"> Cours en direct</span></a>
@@ -84,8 +80,9 @@
                       <div class="noti-head">
                           <h6 class="d-inline-block m-b-0"></h6>
                       </div>
-                  </div>
+                  </div>    
           <li>
+            <app-notifications></app-notifications>
               <div class="dropdown drp-user">
                 <app-logout></app-logout>
               </div>
@@ -114,6 +111,12 @@
                     </div>
                 </div>
             </div>
-            <div class="example-container mb-5" style="padding: 80px;">
+            <div class="example-container mb-5" style="padding: 60px;">
         <!-- [ breadcrumb ] end -->
 <!--********************************************************************************************************************-->
+            </div>
+        </div>
+    </div></div>
+</body>
+</html>
+<app-footer></app-footer>

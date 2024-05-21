@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
 
 const liveCourseSchema = new mongoose.Schema({
-  userID: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-  title: { type: String, required: true },
+  Invited: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Etudiant' }],
+  title: { type: String },
   description: { type: String },
-  startTime: { type: Date, required: true },
-  duration: { type: Number, required: true }
+  LienMeet:{ type: String },
+  startTime: { type: String },
+  duration: { type: String }
 });
 
 const LiveCourse = mongoose.model('LiveCourse', liveCourseSchema);

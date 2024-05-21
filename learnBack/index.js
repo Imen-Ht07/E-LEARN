@@ -1,53 +1,63 @@
-//importation
+// Importations
 const express = require('express');
 const app = express();
 require('dotenv').config();
+const path = require('path');
+const cors = require('cors');
+const fs = require('fs');
 
-//Routes 
+// Routes
 const user = require("./routes/userRoute");
-const participant = require("./routes/participantRoute");
 const ressource = require("./routes/ressourceRoute");
 const admin = require("./routes/adminRoute");
 const catego = require("./routes/categoRoute");
 const enseignant = require("./routes/enseignantRoute");
 const etudiant = require("./routes/etudiantRoute");
-//cors
-const cors = require('cors');
-app.use(cors());
-//middleware
+const liveCours = require("./routes/liveCoursRoute");
+const notification = require("./routes/notificationRoute")
+// CORS configuration
+app.use(cors({
+  origin: 'http://localhost:4200', // Update to the origin of your frontend
+  credentials: true
+}));
+
+// Other middlewares and routes...
 app.use(express.json());
-//aide les ports de back et front a s'adapter 
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-   "Access-Control-Allow-Headers",
-   "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-  );
-  if (req.method === "OPTIONS") {
-   res.header("Access-Control-Allow-Methods", "PUT, POST, PATCH, DELETE, GET");
-   return res.status(200).json({});
-  }
+  res.header("Access-Control-Allow-Origin", "http://localhost:4200");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+  res.header("Access-Control-Allow-Methods", "PUT, POST, PATCH, DELETE, GET");
+  res.header("Access-Control-Allow-Credentials", "true");
   next();
- });
- //pour les images BFR(Backend et Frontend Relation)
-app.use('/uploads', express.static('uploads'));
- //USE express
-app.use(express.json());
-//other use routes
+});
+// Définir le dossier 'uploads' comme dossier statique
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+const paths = ['uploads/images', 'uploads/videos', 'uploads/pdfs'];
+
+paths.forEach(path => {
+    if (!fs.existsSync(path)) {
+        fs.mkdirSync(path, { recursive: true });
+    }
+});
+
+
+
+// Utilisation des routes
 app.use('/user', user);
-app.use('/participant', participant);
+app.use('/live', liveCours);
 app.use('/cours', ressource);
-app.use('/admin',admin);
-app.use('/catego',catego);
-app.use('/enseignant',enseignant);
-app.use('/etudiant',etudiant);
-                   
-//appel a database.js 
+app.use('/admin', admin);
+app.use('/catego', catego);
+app.use('/enseignant', enseignant);
+app.use('/etudiant', etudiant);
+app.use('/notification', notification);
+
+// Connexion à la base de données
 require('./database');
 
-//port d'ecoute du serveur
+// Port d'écoute du serveur
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
-}); 
+});

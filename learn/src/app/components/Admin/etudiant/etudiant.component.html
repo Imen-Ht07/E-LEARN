@@ -1,3 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>PFE</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="">
+    <meta name="author" content="Phoenixcoded" />
+    <!-- Favicon icon -->
+
+    
+    <link rel="icon" href="/assets/admin/images/favicon.ico" type="image/x-icon">
+    <!-- vendor css -->
+    <link rel="stylesheet" href="/assets/admin/css/style.css">
+</head>
+<body style=" background: linear-gradient(80deg, #6e27df 3%, #a880f1 100%);" >
+	<!-- [ navigation menu ] start -->
+    <nav class="pcoded-navbar" style=" height: 100%;  background:linear-gradient(80deg, #6e27df 3%, #a880f1  100%)">	
+        <div class="navbar-wrapper  ">
+    <div class="navbar-content scroll-div " >
+      <div >
+        <div class="main-menu-header">
+          <img class="img-radius" src="../../../../assets/image/5.jpg" alt="User-Profile-Image">
+          <div class="user-details">
+            <div id="more-details" class="text-white"> E-Learning <i class="fa fa-caret-down"></i>
+                          </div>
+          </div>
+        </div>
+      </div>
+    <br><br>
+      <ul class="nav pcoded-inner-navbar contain "id="tit1">
+        <li class="nav-item">
+            <a href="Admin/dashboard" class="nav-link ">
+                    <span class="pcoded-mtext mx-2">Tableau de bord</span></a>
+        </li>
+        <li class="nav-item pcoded-hasmenu">
+            <a href="/ListEtud" class="nav-link ">
+               <span class="pcoded-mtext mx-2">La liste des étudiants</span></a>
+        </li>
+        <li class="nav-item pcoded-hasmenu">
+            <a href="/ListEns" class="nav-link ">
+               <span class="pcoded-mtext mx-2">La liste des Enseignants</span></a>
+        </li>
+        <li class="nav-item pcoded-hasmenu">
+            <a href="/message" class="nav-link ">
+               <span class="pcoded-mtext mx-2">Les messages</span></a>
+        </li>
+      <li class="nav-item pcoded-hasmenu">
+          <a href="/calender" class="nav-link ">
+             <span class="pcoded-mtext mx-2"> Calendrier </span></a>
+      </li>	
+    </ul>
+    </div>
+    </div>
+    </nav>
+    <!-- [ navigation menu ] end -->
+	<!-- [ Header ] start -->
+	<header class="navbar pcoded-header navbar-expand-lg navbar-light header-blue">
+		<div class="m-header">
+					<a class="mobile-menu" id="mobile-collapse" href="Admin/dashboard"><span></span></a>
+					<a href="#!" class="b-brand">
+					</a>
+					<a href="#!" class="mob-toggler" >
+						<i class="feather icon-more-vertical"></i>
+					</a>
+				</div>
+				<div class="collapse navbar-collapse">
+					<ul class="navbar-nav mr-auto">
+                        
+						<li class="nav-item" id="logout">
+							<a href="#!" class="pop-search"><i class="feather icon-search"></i></a>
+							<div class="search-bar">
+								<input type="text" id="m-search" class="form-control"  
+                                placeholder="Rechercher...">
+								<button type="button" class="close" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+						</li>
+					</ul>
+					<ul class="navbar-nav ml-auto">
+                      
+						<li>
+							<div class="dropdown" id="logout">
+                                    <!--********Ajoutez les routes nessaire *******************-->
+								<a class="dropdown-toggle mr-5" href="#" data-toggle="dropdown"></a>
+								<div class="dropdown-menu dropdown-menu-right notification">
+									<div class="noti-head" >
+										<h6 class="d-inline-block m-b-0"></h6>
+									</div>
+								</div>
+						<li>
+							<div class="dropdown drp-user">
+                                <app-logout></app-logout>
+							</div>
+						</li>
+				</div>
+                </li>
+                </ul>
+                </div>
+			
+	</header>
+	<!-- [ Header ] end -->
+<!-- [ Main Content ] start -->
+<div class="pcoded-main-container">
+    <div class="pcoded-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header container">
+            <div class="page-block ">
+                <div class="row align-items-center">
+                    <div class="col-md-16">
+                        <div class="page-header-title">
+                            <h5 class="m-b-10" id="tit">Tableau de bord</h5>
+                        </div>
+                        <ul class="breadcrumb" id="tit">
+                            <li class="breadcrumb-item"><a href="Admin/dashboard"><i class="feather icon-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="Admin/dashboard">Tableau de bord</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        <!-- [ breadcrumb ] end -->
+        <!-- [ Main Content ] start -->
+        <div class="row" style="padding: 120px;">
 <!-- [ Main Content ] start -->
 <div class="col-xl-12">
     <div class="container p-3 my-3 border cont">
@@ -11,16 +137,15 @@
         <table class="table align-middle mb-0 text-center table-responsive-lg" style="overflow-x:auto;">
            <thead class="bg countour border text-bold">
              <tr>
-               
-               <th>#</th>
-               <th>Nom/Prénom</th>
-               <th>CIN</th>
+              <th>CIN</th>
+               <th>Nom</th>
+               <th>Prénom</th>
                <th>Classe</th>
                <th>Email</th>
-               <th>Adresse/Numéro</th>
+               <th>Numéro de tél</th>
+               <th>Adresse</th>
                <th>Status</th>
                <th>Actions</th>
-               
              </tr>
            </thead>
            <tbody *ngFor="let etudiant of etudiants | paginate : {
@@ -30,12 +155,13 @@
           } 
             " >
              <tr>
-              
-               <td><p class="fw-normal mb-1">{{etudiant.Nom}}<br>{{ etudiant.Prenom}}</p></td>
-               <td><p class="text-muted mb-0">{{ etudiant.cin}}</p></td>
+              <td><p class="text-muted mb-0">{{ etudiant.cin}}</p></td>
+               <td><p class="text-muted mb-0">{{etudiant.Nom}}</td>
+                <td><p class="text-muted mb-0">{{etudiant.Prenom}}</td>
                <td><p class="text-muted mb-0">{{ etudiant.Classe}}</p></td>
                  <td><p class="text-muted mb-0">{{ etudiant.email}}</p></td>
-               <td><p class="fw-normal mb-1">{{ etudiant.adresse}}<br>{{ etudiant.tel}}</p></td>
+                 <td><p class="text-muted mb-0">{{ etudiant.tel}}</p></td>
+               <td><p class="text-muted mb-0">{{ etudiant.adresse}}</td>
                <td>
                 <div *ngIf="etudiant.isVerified===true;then ok else non">{{etudiant.isVerified}}</div>
                   <ng-template #ok>
@@ -46,13 +172,13 @@
                  </ng-template>
               </td> 
                <td>
-                <button type="button" class="btn btn-link btn-sm btn-rounded" (click)="acceptEtud(etudiant._id)" >
-                    <a  title="Verifier" class="text-black"><i class="fa fa-check-circle iconc"></i></a>
+                <button type="button" class="btn btn-link btn-sm btn-rounded" (click)="acceptEtud(etudiant._id)" (click)="refresh()" >
+                    <a  title="Verifier" class="text-black"><i class="fa fa-check-circle icon"></i></a>
                   </button>
-                 <button type="button" class="btn btn-link btn-sm btn-rounded" (click)="refuseEtude(etudiant._id)">
-                    <a  title="refuser" class="text-black"><i class="fa fa-times-circle icont"></i></a>
+                 <button type="button" class="btn btn-link btn-sm btn-rounded" (click)="refuseEtude(etudiant._id)" (click)="refresh()">
+                    <a  title="refuser" class="text-black"><i class="fa fa-times-circle icon"></i></a>
                   </button>
-                 <button type="button" class="btn btn-link btn-sm btn-rounded" title="supprimer"  (click)="deleteEtud(etudiant)">
+                 <button type="button" class="btn btn-link btn-sm btn-rounded" title="supprimer"  (click)="deleteEtud(etudiant)" (click)="refresh()">
                    <i class="fa fa-trash icon"></i>
                  </button>
                </td>
@@ -79,3 +205,9 @@
     </div>
 <!-- [ Main Content ] end -->
 </div>
+</div>
+</div>
+</div>
+</div></body>
+</html>
+<app-footer></app-footer>

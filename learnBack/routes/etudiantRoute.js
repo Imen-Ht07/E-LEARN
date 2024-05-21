@@ -9,19 +9,19 @@ router.post('/registerEtud', etudiantController.registerEtudiant);
 router.get('/etudiants', etudiantController.findAll);
 
 // Route pour mettre à jour un etudiant
-router.put('modifEtud/:id', etudiantController.update);
+router.put('/modifEtud/:id', etudiantController.update);
 
 // Route pour supprimer un etudiant
-router.delete('deleteEtud/:id', etudiantController.delete);
+router.delete('/deleteEtud/:id', etudiantController.delete);
 
 // Route pour obtenir un etudiant par ID
-router.get('EtudByID/:id', etudiantController.get);
+router.get('/EtudByID/:id', etudiantController.get);
 
 // Route pour obtenir le nombre d'etudiants
 router.get('/count', etudiantController.getNbretudiant);
 
 // Route pour refuser une demande d'inscription d'etudiant
-router.delete('/refuseEtud/:id', etudiantController.refuser);
+router.put('/refuseEtud/:id', etudiantController.refuser);
 
 // Route pour accepter une demande d'inscription d'etudiant
 router.put('/acceptEtud/:id', etudiantController.accept);

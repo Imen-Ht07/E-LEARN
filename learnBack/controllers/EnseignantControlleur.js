@@ -40,95 +40,107 @@ exports.registerenseignant = async (req, res) => {
     };  
 
 //get all
-    exports.findAll = (req, res) => {
-        enseignant.find({}).exec(function (err, enseignant) {
-            if (err) {
-                console.error("erreur");
-            } else {
-                res.json(enseignant);
-            }
-        });
-    }
-//update
-    exports.update = (req,res) => {
-        enseignant.findOneAndUpdate({ _id: req.params.id }, { $set: req.body })
-              .then((enseignant) => {
-                  res.status(200).send("modification avec succes")
-              })
-              .catch((error) => { console.log(error) });
-      };
-//delete
-      exports.delete = (req, res) => {
-        enseignant.findOneAndDelete({ _id: req.params.id })
-              .then((data) => {
-                  res.status(200).json("Deleted...")
-              })
-              .catch((error) => { console.log(error) });
-      };
-//get by Id
-      exports.get = (req, res) => {
-        //let enseignantId = req.params.enseignantId;
-        enseignant.findById({ _id: req.params.id })
-            .then((enseignant) => {
-                res.status(200).send(enseignant)
-            })
-            .catch((error) => { console.log(error) });
-    };
-//fonction count
-  exports.getNbrenseignant = (req,res) => {
-    enseignant.count({}).exec(function(err, st) {
-        if (st == 0 && err) {
-          res.json("Pas de enseignants", err);
-        } else {
-          res.json(st); 
-        }
+exports.findAll = (req, res) => {
+  enseignant.find({}).exec()
+      .then(enseignants => {
+          res.json(enseignants);
+      })
+      .catch(err => {
+          console.error(err);
+          res.status(500).json({ message: "Une erreur s'est produite lors de la récupération des enseignants." });
       });
-    }
+}
+// Update
+exports.update = (req, res) => {
+  enseignant.findByIdAndUpdate(req.params.id, req.body)
+      .then(() => {
+          res.status(200).send("Modification avec succès");
+      })
+      .catch(error => {
+          console.log(error);
+          res.status(500).send("Erreur lors de la modification de l'enseignant.");
+      });
+};
 
-//refuser demande d'inscription enseignant
-exports.refuser=(req, res) =>{
-  enseignant.findById({ _id: req.params.id }, function (err, enseignant) {
-    console.log(enseignant.isVerified);
-    if (enseignant.isVerified == false) {
-      enseignant
-        .remove()
-        .then((res) => {
-           res.status(200).send("bravo")
-          console.log("enseignant refusé");
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    } else {
-     
-      console.log("erreur");
-    }
-  })
-    .then(res => res.status(200).send("bravo"))
-    .catch((err) => {
-      console.log(err);
-    });
+// Delete
+exports.delete = (req, res) => {
+  enseignant.findByIdAndDelete(req.params.id)
+      .then(() => {
+          res.status(200).json("Supprimé avec succès");
+      })
+      .catch(error => {
+          console.log(error);
+          res.status(500).send("Erreur lors de la suppression de l'enseignant.");
+      });
 };
-//accepter demande d'inscription enseignant
-exports.accept=(req, res) =>{
-  enseignant.findById({ _id: req.params.id }, function (err, enseignant) {
-    console.log(enseignant.isVerified);
-    if (enseignant.isVerified == true) {
-      enseignant.save()
-        .then((res) => {
-           res.status(200).send("bravo");
-          console.log("enseignant accepté");
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    } else {
-     
-      console.log("erreur");
-    }
-  })
-    .then(res => res.status(200).send("bravo"))
-    .catch((err) => {
-      console.log(err);
-    });
+
+// Get by Id
+exports.get = (req, res) => {
+  enseignant.findById(req.params.id)
+      .then(enseignant => {
+          if (!enseignant) {
+              return res.status(404).send("Enseignant non trouvé.");
+          }
+          res.status(200).send(enseignant);
+      })
+      .catch(error => {
+          console.log(error);
+          res.status(500).send("Erreur lors de la récupération de l'enseignant.");
+      });
 };
+
+// Fonction count
+exports.getNbrenseignant = (req, res) => {
+  enseignant.countDocuments({})
+      .then(count => {
+          if (count === 0) {
+              res.status(404).json("Pas d'enseignants trouvés.");
+          } else {
+              res.status(200).json(count);
+          }
+      })
+      .catch(error => {
+          console.log(error);
+          res.status(500).send("Erreur lors de la récupération du nombre d'enseignants.");
+      });
+};
+// Accepter une demande
+exports.accept = (req, res) => {
+  const id = req.params.id;
+  enseignant.findById(id)
+      .then(enseignant => {
+          if (!enseignant) {
+              return res.status(404).json({ message: "Enseignant non trouvé avec l'ID fourni" });
+          }
+          enseignant.isVerified = true; // Mettre à jour le statut
+          return enseignant.save(); // Sauvegarder les modifications
+      })
+      .then(updatedEnseignant => {
+          res.json(updatedEnseignant); // Retourner l'enseignant mis à jour
+      })
+      .catch(err => {
+          console.error(err);
+          res.status(500).json({ message: "Une erreur s'est produite lors de l'acceptation de la demande." });
+      });
+};
+
+// Refuser une demande
+exports.refuse = (req, res) => {
+  const id = req.params.id;
+  enseignant.findById(id)
+      .then(enseignant => {
+          if (!enseignant) {
+              return res.status(404).json({ message: "Enseignant non trouvé avec l'ID fourni" });
+          }
+          enseignant.isVerified = false; // Mettre à jour le statut
+          return enseignant.save(); // Sauvegarder les modifications
+      })
+      .then(updatedEnseignant => {
+          res.json(updatedEnseignant); // Retourner l'enseignant mis à jour
+      })
+      .catch(err => {
+          console.error(err);
+          res.status(500).json({ message: "Une erreur s'est produite lors du refus de la demande." });
+      });
+};
+

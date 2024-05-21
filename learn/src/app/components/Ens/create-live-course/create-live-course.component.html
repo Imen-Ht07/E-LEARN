@@ -17,7 +17,7 @@
 </head>
 <body style=" background: linear-gradient(80deg, #6e27df 3%, #a880f1 100%);" >
 	<!-- [ navigation menu ] start -->
-  <nav class="pcoded-navbar" style=" height: 60%;  background:linear-gradient(80deg, #6e27df 3%, #a880f1  100%)">	
+  <nav class="pcoded-navbar" style=" height: 70%;  background:linear-gradient(80deg, #6e27df 3%, #a880f1  100%)">	
     <div class="navbar-wrapper  ">
 <div class="navbar-content scroll-div " >
   <div >
@@ -39,10 +39,10 @@
         <a href="/categorie" class="nav-link ">
            <span class="pcoded-mtext mx-2"> Catégories</span></a>
     </li>
-         <li class="nav-item pcoded-hasmenu">
-            <a href="#" class="nav-link ">
-               <span class="pcoded-mtext mx-2"> Cours</span></a>
-        </li>
+    <li class="nav-item pcoded-hasmenu">
+      <a href="#" class="nav-link ">
+         <span class="pcoded-mtext mx-2"> Cours</span></a>
+  </li>
         <li class="nav-item pcoded-hasmenu">
             <a href="/video" class="nav-link ">
                <span class="pcoded-mtext mx-2"> Vidéos </span></a>
@@ -50,6 +50,7 @@
         <li class="nav-item pcoded-hasmenu">
           <a href="/direct" class="nav-link ">
              <span class="pcoded-mtext mx-2"> Cours en direct</span></a>
+             </li>
   <li class="nav-item pcoded-hasmenu">
       <a href="/calender" class="nav-link ">
          <span class="pcoded-mtext mx-2"> Calendrier </span></a>
@@ -122,22 +123,37 @@
         <!-- [ breadcrumb ] end -->
 <!--********************************************************************************************************************-->
 <div class="add-resource-container">
-        <h2>Modifier une catégorie</h2>
-        <form (submit)="onSubmit()" enctype="multipart/form-data">
-          <div>
-            <label for="name">Category Name:</label>
-            <input type="text" id="name" [(ngModel)]="categoryData.name" name="name" required>
-          </div>
-          <div>
-            <label for="image">Category Image:</label>
-            <input type="file" id="image" [(ngModel)]="categoryData.imageCat" (change)="loadImage($event)" name="categoryImage" accept="image/*">
-          </div>
-            <div class="text-md-end">
-          <button type="submit">Modifier</button>
-          <button type="submit" routerLink="/categorie">Annuler</button>
-</div>
-        </form>
+  <h2>Créer un nouveau cours en direct</h2>
+  <form (submit)="createLiveCourse()">
+    <div class="form-group">
+      <label for="title">Titre :</label>
+      <input type="text" id="title" name="title" [(ngModel)]="newLiveCourse.title" required>
     </div>
+    <div class="form-group">
+      <label for="description">Description :</label>
+      <textarea id="description" name="description" [(ngModel)]="newLiveCourse.description" required></textarea>
+    </div>
+    <div class="form-group">
+      <label for="LienMeet">Lien Meet :</label>
+      <textarea id="LienMeet" name="LienMeet" [(ngModel)]="newLiveCourse.LienMeet" required></textarea>
+    </div>
+    <div class="form-group">
+      <label for="startTime">Heure de début :</label>
+      <input type="datetime-local" id="startTime" name="startTime" [(ngModel)]="newLiveCourse.startTime" required>
+    </div>
+    <div class="form-group">
+      <label for="duration">Durée (en minutes) :</label>
+      <input type="number" id="duration" name="duration" [(ngModel)]="newLiveCourse.duration" required>
+    </div>
+    <div class="form-group">
+      <label for="invitedStudents">Étudiants invités :</label>
+      <select id="invitedStudents" [(ngModel)]="selectedStudentIds" (change)="onSelectStudent($event)"  name="invitedStudents" multiple>
+        <option *ngFor="let student of students" [value]="student._id">{{student.email}}</option>
+      </select>
+    </div>
+    <button type="submit">Créer</button>
+  </form>
+</div>
 </div>
 </div>
 </div>

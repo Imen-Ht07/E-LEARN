@@ -1,0 +1,60 @@
+/* Styles for the add resource container */
+.add-resource-container {
+    background-color: #f8f9fa; /* Change background color as needed */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+  }
+  
+  .add-resource-container h2 {
+    margin-bottom: 20px; /* Add space below the heading */
+  }
+  
+  .add-resource-container .form-group {
+    margin-bottom: 20px; /* Add space between form elements */
+  }
+  
+  .add-resource-container label {
+    font-weight: bold; /* Make labels bold */
+  }
+  .add-resource-container input[type="number"],
+  .add-resource-container input[type="text"],
+  .add-resource-container input[type="datetime-local"] {
+    width: 100%; /* Make input fields fill the container width */
+    padding: 10px; /* Add padding for better appearance */
+    border: 1px solid #ced4da; /* Add border */
+    border-radius: 5px; /* Add border radius */
+  }
+  textarea{
+    width: 100%; /* Make input fields fill the container width */
+    padding: 10px; /* Add padding for better appearance */
+    border: 1px solid #ced4da; /* Add border */
+    border-radius: 5px; /* Add border radius */
+  }
+ 
+  
+  .add-resource-container button[type="submit"] {
+    background-color: #6e27df ; /* Button background color */
+    color: #fff; /* Button text color */
+    border: none; /* Remove button border */
+    padding: 10px 50px; /* Add padding */
+    border-radius: 5px; /* Add border radius */
+    cursor: pointer; /* Change cursor to pointer */
+    transition: background-color 0.3s ease; /* Add transition effect */
+  }
+  h2{
+    color: #a880f1;
+   font-size: 24px; /* Taille de la police */
+   font-weight: bold; /* Gras */
+   margin-bottom: 20px; /* Marge en bas */
+   text-transform: uppercase; /* Transformer le texte en majuscules */
+   border-bottom: 2px solid #333; /* Bordure en bas */
+   padding-bottom: 10px; /* Espacement en bas */
+   text-align: center; /* Centrer le texte */
+  }
+ select{
+  width: 100%; /* Make input fields fill the container width */
+  padding: 10px; /* Add padding for better appearance */
+  border: 1px solid #ced4da; /* Add border */
+  border-radius: 5px; /* Add border radius */
+ } 

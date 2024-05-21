@@ -15,6 +15,7 @@ import { CategorieComponent } from './components/Ens/categorie/categorie.compone
 import { RessourcesComponent } from './components/Ens/ressources/ressources.component';
 import { EditCategorieComponent } from './components/Ens/edit-categorie/edit-categorie.component';
 import { InscriptionEnsComponent } from './components/Ens/inscription-ens/inscription-ens.component';
+import { CreateLiveCourseComponent } from './components/Ens/create-live-course/create-live-course.component';
 //admin
 import { DashboardComponent } from './components/Admin/dashboard/dashboard.component';
 import { EtudiantComponent } from './components/Admin/etudiant/etudiant.component';
@@ -24,7 +25,7 @@ import {CategorieEtudComponent} from './components/Etud/categorie/categorie.comp
 import { CoursComponent } from './components/Etud/cours/cours.component';
 import { DashbordEtudComponent } from './components/Etud/dashbord-etud/dashbord-etud.component';
 import { InscriptionEtudComponent } from './components/Etud/inscription-etud/inscription-etud.component';
-
+import { NotificationsComponent } from './components/Etud/notifications/notifications.component';
 const routes: Routes = [
   {path:'unauthorized',component:UnauthorizedComponent},
   {path:'Ens/Inscri',component:InscriptionEnsComponent},
@@ -40,10 +41,12 @@ const routes: Routes = [
   {path:'addCat',component:AddCategorieComponent , canActivate: [AuthGuard] ,  data: {role: 'enseignant'}},
   {path:'categorie',component:CategorieComponent ,canActivate: [AuthGuard] ,  data: {role: 'enseignant'}},
   { path:'editCat/:id',component:EditCategorieComponent ,canActivate: [AuthGuard] ,  data: {role: 'enseignant'} },
+  {path:'direct',component:CreateLiveCourseComponent , canActivate: [AuthGuard] ,  data: {role: 'enseignant'}},
   //etudiant
   {path:'categorieView',component:CategorieEtudComponent  , canActivate: [AuthGuard] ,  data: {role: 'etudiant'} },
   {path:'cours/:id',component:CoursComponent , canActivate: [AuthGuard] ,  data: {role: 'etudiant'}},
   {path:'Etud/dashboard',component:DashbordEtudComponent , canActivate: [AuthGuard] ,  data: {role: 'etudiant'}},
+  {path:'notification',component:NotificationsComponent , canActivate: [AuthGuard] ,  data: {role: 'etudiant'}},
   //admin
   {path:'Admin/dashboard',component:DashboardComponent , canActivate: [AuthGuard] ,  data: {role: 'admin'}},
   {path:'ListEtud',component:EtudiantComponent , canActivate: [AuthGuard] ,  data: {role: 'admin'}},

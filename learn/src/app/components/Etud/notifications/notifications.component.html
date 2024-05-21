@@ -1,0 +1,14 @@
+    <div class=" align-items-center ms-auto">
+        <div class="nav-item dropdown">
+            <ul class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                <i class="fa fa-envelope me-lg-2"></i>
+                <span class="d-none d-lg-inline-flex">Notifications ({{ notifications.length }})</span>
+            </ul>
+            <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
+                <li class="dropdown-item">
+                    <div class="d-flex align-items-center">
+                        <div class="ms-2" *ngFor="let notification of notifications" >
+                            <h6 class="fw-normal mb-0">{{ notification.message }}</h6>
+                        </div>
+                    </div>
+                </li>

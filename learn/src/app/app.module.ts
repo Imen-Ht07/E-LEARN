@@ -15,7 +15,9 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-
+import { InscriptionEtudComponent } from './components/Etud/inscription-etud/inscription-etud.component';
+import { InscriptionEnsComponent } from './components/Ens/inscription-ens/inscription-ens.component';
+import { LogoutComponent } from './components/logout/logout.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { AboutComponent } from './components/about/about.component';
 //Enseignant
@@ -24,19 +26,18 @@ import { DashbordEnsComponent } from './components/Ens/dashbord-ens/dashbord-ens
 import { AddCategorieComponent } from './components/Ens/add-categorie/add-categorie.component';
 import { CategorieComponent } from './components/Ens/categorie/categorie.component';
 import { EditCategorieComponent } from './components/Ens/edit-categorie/edit-categorie.component';
+import { CreateLiveCourseComponent } from './components/Ens/create-live-course/create-live-course.component';
 //Admin
 import { DashboardComponent } from './components/Admin/dashboard/dashboard.component';
-
+import { EtudiantComponent } from './components/Admin/etudiant/etudiant.component';
+import { EnseignantComponent } from './components/Admin/enseignant/enseignant.component';
 //etudiant
 import {CategorieEtudComponent} from './components/Etud/categorie/categorie.component';
 import { DashbordEtudComponent } from './components/Etud/dashbord-etud/dashbord-etud.component';
 import { RessourcesComponent } from './components/Ens/ressources/ressources.component';
 import { CoursComponent } from './components/Etud/cours/cours.component';
-import { EtudiantComponent } from './components/Admin/etudiant/etudiant.component';
-import { EnseignantComponent } from './components/Admin/enseignant/enseignant.component';
-import { InscriptionEtudComponent } from './components/Etud/inscription-etud/inscription-etud.component';
-import { InscriptionEnsComponent } from './components/Ens/inscription-ens/inscription-ens.component';
-import { LogoutComponent } from './components/logout/logout.component';
+import { NotificationsComponent } from './components/Etud/notifications/notifications.component';
+
 
 
 
@@ -64,7 +65,9 @@ import { LogoutComponent } from './components/logout/logout.component';
     UnauthorizedComponent,
     InscriptionEtudComponent,
     InscriptionEnsComponent,
-    LogoutComponent
+    LogoutComponent,
+    CreateLiveCourseComponent,
+    NotificationsComponent
   
   ],
   imports: [

@@ -9,19 +9,19 @@ router.post('/registerEns', enseignantController.registerenseignant);
 router.get('/enseignants', enseignantController.findAll);
 
 // Route pour mettre à jour un enseignant
-router.put('modifEns/:id', enseignantController.update);
+router.put('/modifEns/:id', enseignantController.update);
 
 // Route pour supprimer un enseignant
-router.delete('deleteEns/:id', enseignantController.delete);
+router.delete('/deleteEns/:id', enseignantController.delete);
 
 // Route pour obtenir un enseignant par ID
-router.get('EnsByID/:id', enseignantController.get);
+router.get('/EnsByID/:id', enseignantController.get);
 
 // Route pour obtenir le nombre d'enseignants
 router.get('/count', enseignantController.getNbrenseignant);
 
 // Route pour refuser une demande d'inscription d'enseignant
-router.delete('/refuseEns/:id', enseignantController.refuser);
+router.put('/refuseEns/:id', enseignantController.refuse);
 
 // Route pour accepter une demande d'inscription d'enseignant
 router.put('/acceptEns/:id', enseignantController.accept);

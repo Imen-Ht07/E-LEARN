@@ -24,7 +24,11 @@ export class AddCategorieComponent {
     this.selectedFile = file;
     this.categoryData.imageCat = file.name;
   }
-
+  // Appelée à chaque fois que l'utilisateur modifie le texte
+  updateName(event: Event): void {
+    const inputElement = event.target as HTMLInputElement;
+    this.categoryData.name = inputElement.value.toUpperCase(); // Convertit le texte en majuscules
+  }
   createCategory(): void {
     if (!this.selectedFile) { // Correction : Vérifiez si this.selectedFile est null
       console.log('Veuillez sélectionner un fichier');

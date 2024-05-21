@@ -50,6 +50,7 @@
             <li class="nav-item pcoded-hasmenu">
               <a href="/direct" class="nav-link ">
                  <span class="pcoded-mtext mx-2"> Cours en direct</span></a>
+                 </li>
       <li class="nav-item pcoded-hasmenu">
           <a href="/calender" class="nav-link ">
              <span class="pcoded-mtext mx-2"> Calendrier </span></a>
@@ -121,13 +122,22 @@
             <div class="example-container mb-5" style="padding: 80px;">
         <!-- [ breadcrumb ] end -->
 <!--********************************************************************************************************************--><!-- No data message -->
-<p *ngIf="categories.length <= 0" class="no-data text-center">Aucun cours en ce moment.</p>
 <!-- Search input -->
 <div class="form-group has-search container col-md-6 mt-1">
-<input type="text" class="form-control fa fa-search " placeholder="Search">
+  <span class="fa fa-search form-control-feedback"></span>
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Search"
+    [(ngModel)]="searchQuery"
+    (input)="onSearch()"
+  >
+<!--ajout bouton -->
 <button routerLink="/addCat"><i class="fa fa-plus"></i></button>
 </div>
+<!--********************************************************************************************************************--><!-- [ Main Content ] end -->
 <!-- Affichage de la liste des catégories -->
+<div *ngIf="filteredCategories && filteredCategories.length > 0">
 <table>
     <thead>
       <tr>
@@ -138,7 +148,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let categorie of categories">
-        <td>{{ categorie.name }}</td>
+        <td class="uppercase-text">{{ categorie.name }}</td>
         <td><img [src]="'http://localhost:3000/' + categorie.imageCat" style="height: 100px; width: 100px;"></td>
         <td>
           <button [routerLink]="['/editCat', categorie._id]"><i class="fa fa-pen"></i></button>
@@ -146,11 +156,15 @@
           <button [routerLink]="['/ressource', categorie._id]"><i class="fa fa-book"></i></button>
         </td>
       </tr>
+      <div *ngIf="filteredCategories.length === 0">
+        No results found.
+      </div>
     </tbody>
   </table>
     </div>
   </div>  
   </div></div>
+  </div>
         <!--Footer-->
         <app-footer></app-footer>
     

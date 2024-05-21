@@ -72,4 +72,9 @@ export class EnseignantComponent implements OnInit{
     );
   };
 
+//actualiser
+refresh(): void {
+  window.location.reload();
+}
+
 }

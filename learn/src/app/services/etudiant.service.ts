@@ -43,7 +43,7 @@ export class EtudiantService {
 
   // Refuser une demande d'inscription d'étudiant
   refuserDemandeInscription(id: string): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/refuseEtud/${id}`);
+    return this.http.put(`${this.baseUrl}/refuseEtud/${id}`,null);
   }
 
   // Accepter une demande d'inscription d'étudiant

@@ -72,5 +72,11 @@ export class EtudiantComponent implements OnInit{
         }
       );
     };
+    
+//actualiser
+  refresh(): void {
+    window.location.reload();
+}
+  
   }
   

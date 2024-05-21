@@ -10,13 +10,12 @@ import { Categorie } from 'src/app/models/categorie';
 })
 export class EditCategorieComponent implements OnInit {
   categoryId!: string;
-  category: Categorie | undefined;
-  selectedFile: any; 
   categoryData: Categorie = {
     _id: '',
     name: '',
     imageCat: ''
   };
+  selectedFile: File | null = null;
 
   constructor(
     private categorieService: CategorieService,
@@ -35,31 +34,34 @@ export class EditCategorieComponent implements OnInit {
     if (event.target.files && event.target.files.length > 0) {
       const file = event.target.files[0];
       this.selectedFile = file;
-      this.categoryData.imageCat = file.name;
     }
   }
-  
 
-  getCategoryById(id:any): void {
+  getCategoryById(id: any): void {
     this.categorieService.getCategoryById(id).subscribe(
-        data => {
-          this.categoryData = data;
-          console.log(data);
-        },
-        error => {
-          console.log(error);
-        });
+      data => {
+        this.categoryData = data;
+      },
+      error => {
+        console.log(error);
+      });
   }
 
-  updateCategory(): void {
-    this.categorieService.updateCategory(this.categoryData._id, this.categoryData).subscribe(
+  onSubmit(): void {
+    const formData = new FormData();
+    formData.append('name', this.categoryData.name);
+    if (this.selectedFile) {
+      formData.append('imageCat', this.selectedFile, this.selectedFile.name);
+    }
+    
+    this.categorieService.updateCategory(this.categoryData._id, formData).subscribe(
       response => {
         console.log('Category updated successfully:', response);
-        this.router.navigate(['/categorie']); // Rediriger vers la liste des catégories après la mise à jour
+        this.router.navigate(['/categorie']); // Redirect to the category list after update
       },
       error => {
         console.log('Error updating category:', error);
-        // Gérer les erreurs ici
+        // Handle errors here
       }
     );
   }

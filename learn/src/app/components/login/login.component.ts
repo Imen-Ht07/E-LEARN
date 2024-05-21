@@ -39,7 +39,7 @@ export class LoginComponent {
         if (data === null) {
           alert('Email or Password est incorrect');
         } else if (!data.token) {
-          alert('Authentication échoué.Attendez la verification de ton compte');
+          alert('Authentication échoué. Attendez la vérification de votre compte');
         } else {
           console.log('Login successful');
           console.log('Data.user.role:', data.user.role);
@@ -65,5 +65,5 @@ export class LoginComponent {
         alert('Login failed');
       }
     );
-  }
+  }  
 }

@@ -16,11 +16,24 @@ exports.createCategory = async (req, res) => {
 // Mettre à jour une catégorie
 exports.updateCategory = async (req, res) => {
   try {
-    const { name, imageCat } = req.body;
-    const category = await Category.findByIdAndUpdate({ _id: req.params.id }, { $set: req.body });
+    const { name } = req.body;
+    let updateData = { name };
+
+    if (req.file) {
+      const imageCat = req.file.path;
+      updateData.imageCat = imageCat;
+    }
+
+    const category = await Category.findByIdAndUpdate(
+      req.params.id,
+      { $set: updateData },
+      { new: true }
+    );
+
     if (!category) {
       return res.status(404).json({ message: 'Category not found' });
     }
+
     res.json(category);
   } catch (error) {
     res.status(400).json({ message: error.message });

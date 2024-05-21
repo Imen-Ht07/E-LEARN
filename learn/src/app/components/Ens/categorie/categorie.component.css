@@ -159,14 +159,31 @@ table {
   .has-search {
     display: flex; /* Utilisation de Flexbox pour organiser les éléments */
     align-items: center; /* Aligner les éléments verticalement */
+    position: relative;
+    max-width: 600px; /* Ajustez la largeur selon votre mise en page */
+    margin: 20px auto;
   }
   
   .has-search input[type="text"] {
     flex: 1; /* Le champ de saisie doit occuper autant d'espace que possible */
     margin-right: 50px; /* Marge à droite pour séparer le champ de saisie du bouton */
+    padding-left: 40px; /* espace pour l'icône de recherche */
+    height: 40px; /* hauteur de l'input */
+    border: 1px solid #ccc; /* bordure de l'input */
+    border-radius: 20px; /* bordures arrondies */
+    outline: none;
   }
   
   .has-search button {
     margin-left: 100px; /* Marge à gauche pour séparer le bouton du champ de saisie */
   }
-  
+/* Icone de recherche dans l'input */
+.form-group .fa-search {
+  position: absolute;
+  top: 15px;
+  left: 40px;
+  color: #ccc;
+}
+.uppercase-text {
+  text-transform: uppercase;
+}

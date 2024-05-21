@@ -9,7 +9,9 @@ import { Categorie } from 'src/app/models/categorie';
   styleUrls: ['./categorie.component.css']
 })
 export class CategorieComponent implements OnInit {
+  searchQuery: string = '';
   categories: Categorie[] = [];
+  filteredCategories: Categorie[] = [];
   selectedCategory: Categorie | null = null;
   constructor(private categorieService: CategorieService) {}
 
@@ -21,13 +23,23 @@ export class CategorieComponent implements OnInit {
     this.categorieService.getAllCategories().subscribe(
       (categories) => {
         this.categories = categories;
+        this.filteredCategories = categories;
       },
       (error) => {
         console.error('Erreur lors du chargement des catégories : ', error);
       }
     );
   }
-
+  onSearch(): void {
+    const query = this.searchQuery.trim().toLowerCase();
+    if (query) {
+      this.filteredCategories = this.categories.filter(category =>
+        category.name.toLowerCase().includes(query)
+      );
+    } else {
+      this.filteredCategories = this.categories;
+    }
+  }
   deleteCategory(categorie: Categorie){
     if (categorie && categorie._id && confirm(`Souhaitez-vous confirmer la suppression du fichier "${categorie.name}"?`)) {
     this.categorieService.deleteCategory(categorie._id).subscribe(

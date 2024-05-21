@@ -13,7 +13,7 @@ router.get('/listcategories', categoryController.getAllCategories);
 router.get('/categories/:id', categoryController.getCategoryById);
 
 // Mettre à jour une catégorie
-router.put('/categories/:id', categoryController.updateCategory);
+router.put('/categories/:id', upload.single('imageCat'), categoryController.updateCategory);
 
 // Supprimer une catégorie
 router.delete('/categories/:id', categoryController.deleteCategory);

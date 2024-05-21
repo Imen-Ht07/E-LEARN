@@ -50,6 +50,7 @@
         <li class="nav-item pcoded-hasmenu">
           <a href="/direct" class="nav-link ">
              <span class="pcoded-mtext mx-2"> Cours en direct</span></a>
+             </li>
   <li class="nav-item pcoded-hasmenu">
       <a href="/calender" class="nav-link ">
          <span class="pcoded-mtext mx-2"> Calendrier </span></a>
@@ -126,7 +127,7 @@
         <form (submit)="createCategory()">
           <div class="form-group">
             <label for="name">Nom</label>
-            <input type="text" id="name" name="name" [(ngModel)]="categoryData.name" required>
+            <input type="text" id="name" name="name" [(ngModel)]="categoryData.name" (input)="updateName($event)" required>
           </div>
           <div class="form-group">
             <label for="description">Image</label>
