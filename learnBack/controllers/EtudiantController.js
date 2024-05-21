@@ -103,50 +103,40 @@ exports.getNbretudiant = (req, res) => {
 
 // Refuser une demande d'inscription étudiant
 exports.refuser = (req, res) => {
-    etudiant.findById({ _id: req.params.id }, function (err, etudiant) {
-        console.log(etudiant.isVerified);
-        if (etudiant.isVerified === false) {
-            etudiant
-                .remove()
-                .then(() => {
-                    res.status(200).send("Bravo, étudiant refusé");
-                    console.log("Étudiant refusé");
-                })
-                .catch((err) => {
-                    console.log(err);
-                });
-        } else {
-            console.log("Erreur: impossible de refuser un étudiant déjà vérifié.");
-            res.status(400).send("Erreur: impossible de refuser un étudiant déjà vérifié.");
-        }
-    })
-    .catch((err) => {
-        console.log(err);
-        res.status(500).send("Une erreur est survenue lors du refus de la demande.");
-    });
-};
-
+    const id = req.params.id;
+    etudiant.findById(id)
+        .then(etudiant => {
+            if (!etudiant) {
+                return res.status(404).json({ message: "etudiant non trouvé avec l'ID fourni" });
+            }
+            etudiant.isVerified = false; // Mettre à jour le statut
+            return etudiant.save(); // Sauvegarder les modifications
+        })
+        .then(updatedetudiant => {
+            res.json(updatedetudiant); // Retourner l'etudiant mis à jour
+        })
+        .catch(err => {
+            console.error(err);
+            res.status(500).json({ message: "Une erreur s'est produite lors du refus de la demande." });
+        });
+  };
 // Accepter une demande d'inscription étudiant
 exports.accept = (req, res) => {
-    etudiant.findById({ _id: req.params.id }, function (err, etudiant) {
-        console.log(etudiant.isVerified);
-        if (etudiant.isVerified === true) {
-            etudiant.save()
-                .then(() => {
-                    res.status(200).send("Bravo, étudiant accepté");
-                    console.log("Étudiant accepté");
-                })
-                .catch((err) => {
-                    console.log(err);
-                });
-        } else {
-            console.log("Erreur: impossible d'accepter un étudiant non vérifié.");
-            res.status(400).send("Erreur: impossible d'accepter un étudiant non vérifié.");
-        }
-    })
-    .catch((err) => {
-        console.log(err);
-        res.status(500).send("Une erreur est survenue lors de l'acceptation de la demande.");
-    });
-    };
+    const id = req.params.id;
+    etudiant.findById(id)
+        .then(etudiant => {
+            if (!etudiant) {
+                return res.status(404).json({ message: "etudiant non trouvé avec l'ID fourni" });
+            }
+            etudiant.isVerified = true; // Mettre à jour le statut
+            return etudiant.save(); // Sauvegarder les modifications
+        })
+        .then(updatedetudiant => {
+            res.json(updatedetudiant); // Retourner l'etudiant mis à jour
+        })
+        .catch(err => {
+            console.error(err);
+            res.status(500).json({ message: "Une erreur s'est produite lors de l'acceptation de la demande." });
+        });
+  };
 
