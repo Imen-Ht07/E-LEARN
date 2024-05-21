@@ -32,7 +32,7 @@
     <br><br>
       <ul class="nav pcoded-inner-navbar contain "id="tit1">
         <li class="nav-item">
-            <a href="/dashboard" class="nav-link ">
+            <a href="Etud/dashboard" class="nav-link ">
                     <span class="pcoded-mtext mx-2">Tableau de bord</span></a>
         </li>
         <li class="nav-item pcoded-hasmenu">
@@ -46,6 +46,10 @@
           <a href="/calender" class="nav-link ">
              <span class="pcoded-mtext mx-2"> Calendrier </span></a>
       </li>	
+      <li class="nav-item pcoded-hasmenu">
+        <a href="/notification" class="nav-link ">
+           <span class="pcoded-mtext mx-2"> Notifications ({{ notifications.length }})</span></a>
+    </li>	
     </ul>
     </div>
     </div>
@@ -54,7 +58,7 @@
 	<!-- [ Header ] start -->
 <header class="navbar pcoded-header navbar-expand-lg navbar-light header-blue">
   <div class="m-header">
-      <a class="mobile-menu" id="mobile-collapse" href="/dashboard"><span></span></a>
+      <a class="mobile-menu" id="mobile-collapse" href="Etud/dashboard"><span></span></a>
       <a href="#!" class="b-brand"></a>
       <a href="#!" class="mob-toggler">
           <i class="feather icon-more-vertical"></i>
@@ -80,17 +84,17 @@
                       <div class="noti-head">
                           <h6 class="d-inline-block m-b-0"></h6>
                       </div>
-                  </div>    
-          <li>
-            <app-notifications></app-notifications>
+                  </div>  
+            <li>
               <div class="dropdown drp-user">
                 <app-logout></app-logout>
               </div>
+            </li>
+          </div>
           </li>
-  </div>
-  </li>
-  </ul>
-  </div>
+          </ul>
+          </div>
+
 </header>
 <!-- [ Header ] end -->
 <!-- [ Main Content ] start -->
@@ -105,8 +109,8 @@
                             <h5 class="m-b-10" id="tit">Tableau de bord</h5>
                         </div>
                         <ul class="breadcrumb" id="tit">
-                            <li class="breadcrumb-item"><a href="/dashboard"><i class="feather icon-home"></i></a></li>
-                            <li class="breadcrumb-item"><a href="/dashboard">Tableau de bord</a></li>
+                            <li class="breadcrumb-item"><a href="Etud/dashboard"><i class="feather icon-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="Etud/dashboard">Tableau de bord</a></li>
                         </ul>
                     </div>
                 </div>
@@ -114,6 +118,11 @@
             <div class="example-container mb-5" style="padding: 60px;">
         <!-- [ breadcrumb ] end -->
 <!--********************************************************************************************************************-->
+<!-- [ Main Content ] start -->
+
+    <div class="hero-wrap js-fullheight" style="background-image: url('assets/image/1.jpg');">
+
+</div>
             </div>
         </div>
     </div></div>

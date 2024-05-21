@@ -116,33 +116,12 @@
   .dropdown:hover .dropdown-menu {
   display: block;
   }
-  /* Styles généraux pour les cartes */
-  .card {
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    transition: all 0.3s ease-in-out;
-    text-align: center;
-  }
-  
-  .card:hover {
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-  }
-  
-  .card-header {
-    font-size: 1.25rem; 
-    background-color:#874ee3;/* Taille de police plus grande pour les en-têtes */
-  }
-  
-  .card-body h5 {
-    color: #a880f1;
-    text-align: center ; /* Couleur du thème Bootstrap primary */
-  }
-  
-  .card-body p {
-    font-size: 0.9rem;
-    color: #666; /* Gris foncé pour le texte, améliore la lisibilité */
-  }
-  
-  .card-footer {
-    background-color: #f8f9fa; /* Couleur légèrement différente pour le pied de page pour une distinction claire */
-    border-top: 1px solid #e3e6f0; /* Ligne de séparation subtile */
-  }
+
+/* Style de l'image de fond */
+.hero-wrap {
+  background-size: cover;
+  background-position: center center;
+  position: relative;
+  padding: 300px;
+  margin: 300;
+}

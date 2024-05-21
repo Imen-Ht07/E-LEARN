@@ -78,3 +78,11 @@ a{
 .dropdown:hover .dropdown-menu {
   display: block;
 }
+/* Style de l'image de fond */
+.hero-wrap {
+  background-size: cover;
+  background-position: center center;
+  position: relative;
+  padding: 300px;
+  margin: 300;
+}
