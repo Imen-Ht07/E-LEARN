@@ -20,7 +20,7 @@ export class CreateLiveCourseComponent {
     invitedStudents:[]
   };
   students: Etudiant[] = [];
-  selectedStudentIds: string[] = [];
+  filteredStudents: Etudiant[] = [];
 
   constructor(private liveCourseService: LiveCourseService,
               private etudiantService: EtudiantService) {
@@ -31,6 +31,7 @@ export class CreateLiveCourseComponent {
     this.etudiantService.getAllEtudiants().subscribe(
       (data: Etudiant[]) => {
         this.students = data;
+        this.filteredStudents = data; // Initialiser les étudiants filtrés
       },
       (error) => {
         console.error('Erreur lors de la récupération des étudiants :', error);
@@ -38,8 +39,18 @@ export class CreateLiveCourseComponent {
     );
   }
 
+  validateMeetLink(link: string): boolean {
+    const pattern = /^(https?:\/\/)?(meet\.google\.com\/[a-zA-Z0-9\-]+)$/;
+    return pattern.test(link);
+  }
+
   createLiveCourse(): void {
-    this.newLiveCourse.invitedStudents = this.selectedStudentIds;
+    if (!this.validateMeetLink(this.newLiveCourse.LienMeet)) {
+      alert('Veuillez entrer un lien Meet valide.');
+      return;
+    }
+
+    this.newLiveCourse.invitedStudents = this.filteredStudents.map(student => student._id);
     this.liveCourseService.createLiveCourse(this.newLiveCourse).subscribe(
       (data: LiveCourse) => {
         console.log('Cours en direct créé avec succès :', data);
@@ -52,8 +63,12 @@ export class CreateLiveCourseComponent {
     );
   }
 
-  onSelectStudent(event: Event): void {
-    const selectedOptions = (event.target as HTMLSelectElement).selectedOptions;
-    this.selectedStudentIds = Array.from(selectedOptions).map(option => option.value);
+  filterStudentsByClass(event: Event): void {
+    const selectedClass = (event.target as HTMLSelectElement).value;
+    if (selectedClass) {
+      this.filteredStudents = this.students.filter(student => student.Classe === selectedClass);
+    } else {
+      this.filteredStudents = this.students;
+    }
   }
 }

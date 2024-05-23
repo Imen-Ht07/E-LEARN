@@ -9,7 +9,7 @@ import { EtudiantService } from '../../../services/etudiant.service';
 })
 export class InscriptionEtudComponent {
   signupForm: FormGroup;
-
+  Classe : string[] =  ['1er','2éme','3éme'];
   constructor(
     private formBuilder: FormBuilder,
     private EtudiantService: EtudiantService
@@ -38,9 +38,11 @@ export class InscriptionEtudComponent {
           console.log('Signup successful', data);
           // Réinitialiser le formulaire après l'inscription réussie
           this.signupForm.reset();
+          alert('Inscription réussie!');
         },
         (error) => {
           console.log('Error during signup', error);
+          alert('Une erreur est survenue lors de l\'inscription.');
         }
       );
   }

@@ -37,9 +37,11 @@ export class InscriptionEnsComponent {
           console.log('Signup successful', data);
           // Réinitialiser le formulaire après l'inscription réussie
           this.signupForm.reset();
+          alert('Inscription réussie!');
         },
         (error) => {
           console.log('Error during signup', error);
+          alert('Une erreur est survenue lors de l\'inscription.');
         }
       );
   }

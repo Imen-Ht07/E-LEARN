@@ -9,7 +9,7 @@ const etudiantSchema = new mongoose.Schema({
   role: { type: String, enum: ['etudiant']},
   cin : {type:Number, required: true, unique: true},
   dateNaissance : {type :String },
-  Classe : {type: String},
+  Classe : {type: String , enum: ['1er','2éme ','3éme']},
   tel: {type: Number },
   adresse: {type: String },
   isVerified: {type:Boolean, default: false}

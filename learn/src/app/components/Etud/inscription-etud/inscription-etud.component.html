@@ -35,11 +35,14 @@
               </div>
               <!-- Afficher le message d'erreur pour le champ tel -->
               <div *ngIf="signupForm.get('adresse')?.invalid && signupForm.get('adresse')?.touched" class="text-danger">Adresse est requise</div>
-          
+              
               <div class="form-group">
-                <input type="text" formControlName="Classe" class="form-control" placeholder="Enter ton classe">
+                <label for="Classe">Classe:</label>
+                <select formControlName="Classe" class="form-control" id="Classe">
+                  <option value="">-- Sélectionnez une classe --</option>
+                  <option *ngFor="let classe of Classe" [value]="classe">{{ classe }}</option>
+                </select>
               </div>
-
               <div class="form-group">
                 <input type="number" formControlName="tel" class="form-control" placeholder="Enter Numéro Téléphone">
               </div>

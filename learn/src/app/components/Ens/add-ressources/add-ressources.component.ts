@@ -42,15 +42,19 @@ export class AddRessourcesComponent implements OnInit {
       this.resourceService.createResource(this.selectedFile, this.resource, this.selectedCategoryId).subscribe(
         response => {
           console.log('Ressource ajoutée avec succès:', response);
+          alert('Cours ajouté avec succès');
         },
         error => {
           console.error('Erreur lors de l\'ajout de la ressource:', error);
+          alert('Erreur lors de l\'ajout de cours');
         }
       );
     } else {
       console.error('Veuillez sélectionner un fichier.');
+      alert('Veuillez sélectionner un fichier.');
     }
   }
+  
   //CATEGORIE
   getAllCategories(): void {
     this.categorieService.getAllCategories().subscribe(

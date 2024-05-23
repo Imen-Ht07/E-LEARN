@@ -20,7 +20,7 @@ exports.registerEtudiant = async (req, res) => {
             Nom,
             Prenom,
             email,
-            role: 'etudiant', // Vous pouvez définir le rôle directement ici s'il est fixe pour les étudiants
+            role: 'etudiant', 
             password: hashedPassword,
             cin,
             dateNaissance,

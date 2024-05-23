@@ -131,7 +131,9 @@
     </div>
     <div class="form-group">
       <label for="LienMeet">Lien Meet :</label>
-      <textarea id="LienMeet" name="LienMeet" [(ngModel)]="newLiveCourse.LienMeet" required></textarea>
+      <textarea id="LienMeet" name="LienMeet" [(ngModel)]="newLiveCourse.LienMeet" required  #LienMeet="ngModel"></textarea>
+      <div *ngIf="LienMeet.invalid && (LienMeet.dirty || LienMeet.touched)" class="text-danger">
+    </div>
     </div>
     <div class="form-group">
       <label for="startTime">Heure de début :</label>
@@ -142,9 +144,12 @@
       <input type="number" id="duration" name="duration" [(ngModel)]="newLiveCourse.duration" required>
     </div>
     <div class="form-group">
-      <label for="invitedStudents">Étudiants invités :</label>
-      <select id="invitedStudents" [(ngModel)]="selectedStudentIds" (change)="onSelectStudent($event)"  name="invitedStudents" multiple>
-        <option *ngFor="let student of students" [value]="student._id">{{student.email}}</option>
+      <label for="Classe">Classe :</label>
+      <select id="Classe" (change)="filterStudentsByClass($event)" class="form-control">
+        <option value="">-- Sélectionnez une classe --</option>
+        <option value="Classe 1">1er</option>
+        <option value="Classe 2">2éme</option>
+        <option value="Classe 3">3éme</option>
       </select>
     </div>
     <button type="submit">Créer</button>
